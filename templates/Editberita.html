@@ -1,0 +1,49 @@
+{% include 'headerAdmin.html' %}
+<main id="main" class="main bg-white">
+
+    <div class="pagetitle">
+        <h1>Edit Berita</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Edit Berita</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <br>
+    <div class="card border-0 shadow mb-4 ">
+        <div class="card-body mt-4">
+            <div class="table-responsive">
+                <form action="/editBerita/{{data._id}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="_id" value="{{data._id}}">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Image</label>
+                        <img src="../static/assets/imgGambar/{{data.gambar}}" alt="" width="200">
+                        <input type="file" class="form-control" accept=".png,.jpg,.jpeg" name="gambar"
+                            style="border-radius: 13px;" placeholder="Enter the Image" value="{{data.gambar}}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Judul Berita</label>
+                        <input type="text" class="form-control" name="nama" style="border-radius: 13px;"
+                            placeholder="Enter the News Title" required value="{{data.nama}}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" name="deskripsi" style="border-radius: 13px;"
+                            placeholder="Enter the Description" required>{{data.deskripsi}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Waktu Ditambahkan</label>
+                        <input type="text" class="form-control" name="time" style="border-radius: 13px;"
+                            placeholder="Time Added" readonly value="{{data.time}}"/>
+                    </div>
+                    <div class="mb-3 ">
+                        <button type="submit" class="btn btn-danger" style="margin-left: 90%;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main><!-- End #main -->
+
+{% include 'footerAdmin.html' %}

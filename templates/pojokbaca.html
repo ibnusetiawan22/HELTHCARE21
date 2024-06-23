@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DENGAR MAMA - Peduli Kesehatan Mental Maternal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <!-- Favicon -->
+    <link href="../static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="../static/lib/twentytwenty/twentytwenty.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    /* Body */
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+
+.navbar-nav .nav-item {
+    font-weight: 600; /* Sesuaikan dengan nilai yang sesuai untuk semi-bold */
+}
+.text-center-article-card{
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(79, 82, 228, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+/* Custom CSS */
+.article-img {
+    max-width: 100%;
+    max-height: 300px; 
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+
+/* Kartu Artikel */
+.article-card {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #6c757d;
+    margin: 10px 0;
+}
+
+
+.article-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.article-card h4,
+.article-card h2 {
+    margin: 10px 0;
+}
+
+.article-card p {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #6c757d;
+}
+/* Footer */
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary m-1" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light ps-5 pe-0 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Jam Operasional: Senin-Jum'at : 09.00 - 21.00, Sabtu-Minggu : Libur.</small>
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-lg-end">
+                <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
+                    <div class="me-3 pe-3 border-end py-2">
+                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>dengarmama@gmail.com</p>
+                    </div>
+                    <div class="py-2">
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+62 851 6188 0526</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
+        <a href="/" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Icon" class="me-2" style="width: 60px; height: auto; margin-bottom: 10px;">
+                Dengar Mama
+            </h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/about" class="nav-item nav-link ">Tentang</a>
+                <a href="/service" class="nav-item nav-link">Service</a>
+                <a href="/pages" class="nav-item nav-link active">Pojok Baca</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="/appointment" class="btn btn-primary py-2 px-4 ms-3">Ruang Konsul</a>
+            {% if 'username' in session %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ session['username'] }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="/login" class="nav-item nav-link">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <div class="container-fluid hero-header text-center py-5 mb-5">
+    <h1 class="display-3 text-white">Pojok Baca</h1>
+    <a href="/" class="h4 text-white">Home</a>
+    <i class="far fa-circle text-white px-2"></i>
+    <a href="" class="h4 text-white">Artikel</a>
+    </div>
+    <!-- Hero End -->
+
+    <!-- Carousel Start -->
+        <div class="container mb-5">
+            <h1 class="text-center text-dark mb-4">Update Articles</h1>
+            <div id="newsArticleCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for item in berita[:3] %}
+                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                        <a href="{{ url_for('article_detail', article_id=item._id) }}">
+                            <div class="text-center-article-card">
+                                <img src="{{ url_for('static', filename='imgGambar/' + item.gambar) }}" class="d-block mx-auto mb-4 article-img" alt="{{ item.nama }}" style="max-width: 30%; height: auto; object-fit: cover; object-position: center;">
+                                <h2 class="display-6">{{ item.nama }}</h2>
+                                <p class="text-muted">{{ item.time.strftime('%Y-%m-%d') }}</p>
+                                <p class="">{{ item.deskripsi | truncate(50) }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#newsArticleCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newsArticleCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    <!-- Carousel End -->
+ 
+    <!-- News and Articles Section Start -->
+        <div class="container py-5"style="margin-bottom: 100px;">
+        <div class="section-title mb-4 text-center">
+        <h1>Artikel Terbaru</h1>
+        </div>
+        <div class="row g-5">
+        {% for item in berita[::-1] %}
+        <div class="col-lg-4 col-md-6">
+            <div class="article-card">
+                <img src="{{ url_for('static', filename='imgGambar/' + item.gambar) }}" class="article-img mb-3" alt="{{ item.nama }}">
+                <h4>{{ item.nama }}</h4>
+                <p class="text-muted">{{ item.time_str }}</p>
+                <p>{{ item.deskripsi | truncate(50) }}</p>
+                <a href="{{ url_for('article_detail', article_id=item._id) }}" class="btn btn-primary">Baca Selengkapnya</a>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    <!-- News and Articles Section End -->
+
+    <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-white mb-4">Get In Touch</h3>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>JL Ir. Soekarno No.KM. 21, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, <br> Jawa Barat 45363</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>dengarmama@gmail.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+62 851-6188-0526 </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-lg-start">
+                    <h3 class="text-white mb-4">Follow Us</h3>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="mailto:dengarmama@gmail.com"><i class="fas fa-envelope fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://wa.me/message/3MLJJT6XAB5JP1"><i class="fab fa-whatsapp fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.linkedin.com/company/dengar-mama/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/dengarmama/"><i class="fab fa-instagram fw-normal"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-light py-4" style="background: #051225;">
+        <div class="container">
+            <div class="row g-0 justify-content-center">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">2024 Dengar Mama</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/lib/wow/wow.min.js"></script>
+    <script src="../static/lib/easing/easing.min.js"></script>
+    <script src="../static/lib/waypoints/waypoints.min.js"></script>
+    <script src="../static/lib/counterup/counterup.min.js"></script>
+    <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../static/lib/twentytwenty/jquery.event.move.js"></script>
+    <script src="../static/lib/twentytwenty/jquery.twentytwenty.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>

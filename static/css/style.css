@@ -190,8 +190,9 @@ h6,
 }
 
 .hero-header {
-    background: url(../img/h-bg.jpg) center center no-repeat;
+    background: url(../img/h-bg11.jpg) center center no-repeat;
     background-size: cover;
+    min-height: 250px; 
 }
 
 .bg-appointment {

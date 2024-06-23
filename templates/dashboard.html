@@ -1,0 +1,36 @@
+{% include 'headerAdmin.html' %}
+    <main id="main" class="main bg-white">
+
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <h2 style="font-weight: bold;">Selamat Datang Admin</h2>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- looping -->
+            <div class="col">
+                <div class="card">
+                    <img src="../static/img/about1.jpg"  class="card-img-top"
+                        alt="Hollywood Sign on The Hill" />
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">Dengar Mama</h5>
+                        </div>
+                        <p class="card-text">
+                                Dengar Mama merupakan komunitas peduli kesehatan mental maternal yang memberikan ruang aman bagi ibu untuk bercerita, pulih, dan saling memberikan dukungan. Dengan penuh kasih sayang dan empati
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- looping -->
+
+        </div>
+    </main>
+    {% include 'footerAdmin.html' %}

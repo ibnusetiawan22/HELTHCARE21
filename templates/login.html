@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Log In | Dengar Mama</title>
+  
+  <meta property="og:title" content="Project Sweeter"/>
+  <meta property="og:description" content="All of your comment"/>
+  <meta property="og:image" content="{{url_for('static', filename='sweeter.png')}}"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+  <!-- Font Awesome CSS -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #3766b3;
+    }
+    
+    .hero {
+      padding: 1rem 1rem; /* Mengurangi padding atas dan bawah */
+      text-align: center;
+      margin-bottom: 0.1rem; /* Menambahkan margin bawah untuk memisahkan dengan .box */
+    }
+    .hero .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .hero .subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #dbdbdb;
+    }
+    .box {
+      padding: 2rem;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3); /* Bayangan sedikit lebih transparan */
+      border-radius: 8px;
+      background-color: #051B4C;
+      margin: 0 auto; /* Memastikan kotak berada di tengah */
+      max-width: 480px;
+      width: 100%;
+      max-height: 102vh; /* Tinggi maksimum kotak, misalnya 80% dari tinggi viewport */
+    }
+    .button.is-sparta {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .button.is-sparta:hover {
+      background-color: #0056b3;
+    }
+    .button.is-outlined.is-sparta {
+      border-color: #007bff;
+      color: #007bff;
+      background-color: #ffffff;
+    }
+    .button.is-outlined.is-sparta:hover {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+    .help.is-danger {
+      color: #dc3545;
+    }
+    .help.is-success {
+      color: #28a745;
+    }
+    .is-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" style="max-width: 480px; width: 100%;">
+    <section class="hero">
+      <div class="hero-body">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Icon" class="me-2" style="width: 60px; height: auto; margin-bottom: 10px;">
+        <h1 class="title">DENGAR MAMA</h1>
+        <h3 class="subtitle">Selalu Mengerti Bunda</h3>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="box-content">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <div class="field has-addons">
+                  <div class="control has-icons-left" style="width: 100%;">
+                    <input id="input-username" class="input" type="text" placeholder="Masukkan id" />
+                    <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                  </div>
+                  <div id="btn-check-dup" class="control is-hidden">
+                    <button class="button is-sparta" onclick="check_dup()">Check your id</button>
+                  </div>
+                </div>
+                <p id="help-id" class="help is-hidden">Untuk ID Anda, silakan masukkan 2-10 karakter, angka, atau karakter khusus berikut (._-)</p>
+                <p id="help-id-login" class="help is-danger"></p>
+
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="input-password" class="input" type="password" placeholder="Masukkan password" />
+                    <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <p id="help-password-login" class="help is-danger"></p>
+                  <p id="help-password" class="help is-hidden">Untuk kata sandi Anda, silakan masukkan 8-20 karakter, angka, atau karakter khusus berikut (!@#$%^&*)</p>
+                </div>
+              </div>
+              <div id="div-sign-in-or-up" class="has-text-centered">
+                <nav class="level is-mobile">
+                  <button class="level-item button is-sparta" onclick="sign_in()">Masuk</button>
+                  <button class="level-item button is-sparta is-outlined" onclick="clearInputs()">Bersihkan</button>
+                </nav>
+                <hr />
+                <h4 class="mb-3" style="color:#ffffff;">Jika anda belum memiliki akun</h4>
+                <nav class="level is-mobile">
+                  <button class="level-item button is-sparta is-outlined" onclick="toggle_sign_up()">Daftar</button>
+                </nav>
+              </div>
+
+              <div id="sign-up-box" class="is-hidden">
+                <div class="mb-5">
+                  <div class="field">
+                    <div class="control has-icons-left" style="width: 100%;">
+                      <input id="input-password2" class="input" type="password" placeholder="Konfirmasi password" />
+                      <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <p id="help-password2" class="help is-hidden">Tolong masukkan sandi anda lagi</p>
+                  </div>
+                </div>
+                <input id="input-role" class="input" type="hidden" value="user" />
+                <nav class="level is-mobile">
+                  <button class="level-item button is-sparta" onclick="sign_up()">Daftar</button>
+                  <button class="level-item button is-sparta is-outlined" onclick="toggle_sign_up()">Batal</button>
+                  <button class="level-item button is-sparta is-outlined" onclick="clearInputs()">Bersihkan</button>
+                </nav>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function sign_in() {
+      let username = $("#input-username").val();
+      let password = $("#input-password").val();
+    
+      if (username === "") {
+        $("#help-id-login").text("Tolong masukkan id anda.").addClass("is-danger");
+        $("#input-username").focus();
+        return;
+      } else {
+        $("#help-id-login").text("").removeClass("is-danger");
+      }
+    
+      if (password === "") {
+        $("#help-password-login").text("Tolong masukkan password anda.").addClass("is-danger");
+        $("#input-password").focus();
+        return;
+      } else {
+        $("#help-password-login").text("").removeClass("is-danger");
+      }
+    
+      $.ajax({
+        type: "POST",
+        url: "/sign_in",
+        data: {
+          username_give: username,
+          password_give: password
+        },
+        success: function (response) {
+          console.log(response);  // Tambahkan ini untuk melihat respons dari server di console log
+          if (response["result"] === "success") {
+            $.cookie("mytoken", response["token"], { path: "/" });
+            let role = response["role"];
+            if (role === "admin") {
+              window.location.replace("/admin");  // Redirect ke halaman admin jika peran adalah admin
+            } else {
+              window.location.replace("/index");  // Redirect ke halaman index jika peran bukan admin
+            }
+          } else {
+            alert(response["msg"]);  // Tampilkan pesan kesalahan dari server jika login gagal
+          }
+        },
+        error: function (error) {
+          console.log(error);
+          alert("Error occurred while signing in."); // General error message if an error occurs during the request
+        }
+      });
+    }
+
+    function toggle_sign_up() {
+      $("#sign-up-box").toggleClass("is-hidden");
+      $("#div-sign-in-or-up").toggleClass("is-hidden");
+      $("#btn-check-dup").toggleClass("is-hidden");
+      $("#help-id").toggleClass("is-hidden");
+      $("#help-password").toggleClass("is-hidden");
+      $("#help-password2").toggleClass("is-hidden");
+    }
+
+    function is_nickname(asValue) {
+      var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+      return regExp.test(asValue);
+    }
+
+    function is_password(asValue) {
+      var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
+      return regExp.test(asValue);
+    }
+
+    function check_dup() {
+      let username = $("#input-username").val();
+      console.log(username);
+      if (username === "") {
+        $("#help-id").text("Enter in your id").removeClass("is-safe").addClass("is-danger");
+        $("#input-username").focus();
+        return;
+      }
+      if (!is_nickname(username)) {
+        $("#help-id").text("Tolong cek id anda, untuk ID Anda, silakan masukkan 2-10 karakter, angka, atau karakter khusus berikut (._-)").removeClass("is-safe").addClass("is-danger");
+        $("#input-username").focus();
+        return;
+      }
+      $("#help-id").addClass("is-loading");
+      $.ajax({
+        type: "POST",
+        url: "/sign_up/check_dup",
+        data: {
+          username_give: username,
+        },
+        success: function (response) {
+          console.log(response);
+          if (response["exists"]) {
+            $("#help-id").text("Id ini sudah digunakan.").removeClass("is-safe").addClass("is-danger");
+            $("#input-username").focus();
+          } else {
+            $("#help-id").text("Id ini tersedia untuk digunakan!").removeClass("is-danger").addClass("is-success");
+          }
+          $("#help-id").removeClass("is-loading");
+        },
+      });
+    }
+
+    function sign_up() {
+      let username = $("#input-username").val();
+      let password = $("#input-password").val();
+      let password2 = $("#input-password2").val();
+      let role = $("#input-role").val();
+      
+      // Validasi username
+      if ($("#help-id").hasClass("is-danger")) {
+        alert("Tolong cek id anda");
+        return;
+      } else if (!$("#help-id").hasClass("is-success")) {
+        alert("Tolong periksa lagi id anda");
+        return;
+      }
+    
+      // Validasi password
+      if (password === "") {
+        $("#help-password").text("Tolong masukkan password anda").removeClass("is-success").addClass("is-danger");
+        $("#input-password").focus();
+        return;
+      } else {
+        $("#help-password").text("").removeClass("is-success").addClass("is-danger");
+      }
+    
+      // Validasi password2 (konfirmasi password)
+      if (password2 === "") {
+        $("#help-password2").text("Tolong masukkan password anda").removeClass("is-success").addClass("is-danger");
+        $("#input-password2").focus();
+        return;
+      } else if (password2 !== password) {
+        $("#help-password2").text("Password anda tidak sesuai").removeClass("is-success").addClass("is-danger");
+        $("#input-password2").focus();
+        return;
+      } else {
+        $("#help-password2").text("Password anda cocok!").removeClass("is-danger").addClass("is-success");
+      }
+    
+      // Jika semua validasi lolos, lakukan AJAX request untuk mendaftar
+      $.ajax({
+        type: "POST",
+        url: "/sign_up/save",
+        data: {
+          username_give: username,
+          password_give: password,
+          role_give: role,
+        },
+        success: function (response) {
+          alert("Anda berhasil mendaftar! Selamat!");
+          window.location.replace("/login");
+        },
+        error: function (error) {
+          console.log(error);
+          alert("Terjadi kesalahan saat mendaftar."); // Pesan kesalahan umum jika terjadi kesalahan selama permintaan
+        }
+      });
+    }
+    
+
+    function clearInputs() {
+      $("#input-username").val("");
+      $("#input-password").val("");
+      $("#input-password2").val("");
+      $("#input-role").val("user");
+      $("#help-id-login").text("");
+      $("#help-password-login").text("");
+      $("#help-id").text("");
+      $("#help-password").text("");
+      $("#help-password2").text("");
+    }
+  </script>
+</body>
+</html>

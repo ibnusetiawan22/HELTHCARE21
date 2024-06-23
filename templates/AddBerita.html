@@ -1,0 +1,41 @@
+{% include 'headerAdmin.html' %}
+    <main id="main" class="main bg-white">
+
+        <div class="pagetitle">
+            <h1>Berita</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/berita">Add Artikel</a></li>
+                    <li class="breadcrumb-item active">New Artikel</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+<br>
+        <div class="card border-0 shadow mb-4 ">
+            <div class="card-body mt-4">
+                <div class="table-responsive">
+                    <form action="/addBerita" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Image</label>
+                            <input type="file" class="form-control" accept=".png,.jpg,.jpeg" name="gambar" style="border-radius: 13px;"
+                                placeholder="Enter the Image" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Judul Berita</label>
+                            <input type="text" class="form-control" name="nama" style="border-radius: 13px;"
+                                placeholder="Enter the Title" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Deskripsi Berita</label>
+                            <textarea class="form-control" name="deskripsi" style="border-radius: 13px;"
+                                placeholder="Enter Deskripsi Berita" required ></textarea>
+                        </div>
+                        <div class="mb-3 ">
+                            <button type="submit" class="btn btn-danger" style="margin-left: 90%;">Submit</button>
+                        </div>
+                        
+                        
+                    </form>
+    </main><!-- End #main -->
+
+    {% include 'footerAdmin.html' %}
