@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DentCare - Dental Clinic Website Template</title>
+    <title>DENGAR MAMA - Peduli Kesehatan Mental Maternal</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -73,9 +73,11 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
-        <a href="index.html" class="navbar-brand p-0">
-            <h1 class="m-0 text-primary"><img src="{{ url_for('static', filename='logo.png') }}" alt="DentCare Logo" style="width: 75px; height: auto;">
-                <i class="" ></i>Dengar Mama</h1>
+        <a href="/" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Icon" class="me-2" style="width: 60px; height: auto; margin-bottom: 10px;">
+                Dengar Mama
+            </h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -83,21 +85,26 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="/" class="nav-item nav-link">Home</a>
-                <a href="/about" class="nav-item nav-link">About</a>
+                <a href="/about" class="nav-item nav-link">Tentang</a>
                 <a href="/service" class="nav-item nav-link active">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">Our Dentist</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="/pages" class="nav-item nav-link">Pojok Baca</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            <a href="/appointment" class="btn btn-primary py-2 px-4 ms-3">Ruang Konsul</a>
+            {% if 'username' in session %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ session['username'] }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="/login" class="nav-item nav-link">Login</a>
+            {% endif %}
         </div>
     </nav>
     <!-- Navbar End -->
@@ -127,7 +134,7 @@
         <div class="row py-3">
             <div class="col-12 text-center">
                 <h1 class="display-3 text-white animated zoomIn">Services</h1>
-                <a href="" class="h4 text-white">Home</a>
+                <a href="/" class="h4 text-white">Home</a>
                 <i class="far fa-circle text-white px-2"></i>
                 <a href="" class="h4 text-white">Services</a>
             </div>
@@ -138,7 +145,7 @@
 
     <!-- Service Start -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
+    <div class="container" style="margin-bottom: 100px;">
         <div class="row g-5 mb-5">
             <div class="col-lg-5 service-item wow zoomIn" data-wow-delay="0.9s" style="min-height: 320px;">
                 <div class="rounded-top overflow-hidden">
@@ -153,13 +160,13 @@
                 <div class="row g-5">
                     <div class="col-md-5 service-item wow zoomIn" data-wow-delay="0.6s">
                         <div class="rounded-top overflow-hidden">
-                            <img class="img-fluid" src="static/img/service2.jpeg" alt="">
+                            <img class="img-fluid" src="static/img/service2.jpg" alt="">
                         </div>
                         <div class="position-relative bg-light rounded-bottom text-center p-4">
                             <h5 class="m-0">Layanan</h5>
                         </div>
                     </div>
-                    <div class="col-md-5 service-item wow zoomIn" data-wow-delay="0.9s">
+                    <div class="col-md-5 service-item wow zoomIn" data-wow-delay="0.6s">
                         <div class="rounded-top overflow-hidden">
                             <img class="img-fluid" src="static/img/service6.jpg" alt="">
                         </div>
@@ -204,22 +211,7 @@
 </div>
 
     <!-- Service End -->
-    
 
-    <!-- Newsletter Start -->
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
-        <div class="container">
-            <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Sign Up</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
     
 
        <!-- Footer Start -->

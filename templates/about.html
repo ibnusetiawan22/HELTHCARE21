@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DentCare - Dental Clinic Website Template</title>
+    <title>DENGAR MAMA - Peduli Kesehatan Mental Maternal</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="static/favicon.ico" rel="icon">
+    <link href="../static/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -74,9 +74,11 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
-        <a href="index.html" class="navbar-brand p-0">
-            <h1 class="m-0 text-primary"><img src="{{ url_for('static', filename='logo.png') }}" alt="DentCare Logo" style="width: 75px; height: auto;">
-                <i class="" ></i>Dengar Mama</h1>
+        <a href="/" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Icon" class="me-2" style="width: 60px; height: auto; margin-bottom: 10px;">
+                Dengar Mama
+            </h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -84,21 +86,26 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="/" class="nav-item nav-link">Home</a>
-                <a href="/about" class="nav-item nav-link active">About</a>
+                <a href="/about" class="nav-item nav-link active">Tentang</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">Our Dentist</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="/pages" class="nav-item nav-link">Pojok Baca</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            <a href="/appointment" class="btn btn-primary py-2 px-4 ms-3">Ruang Konsul</a>
+            {% if 'username' in session %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ session['username'] }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="/login" class="nav-item nav-link">Login</a>
+            {% endif %}
         </div>
     </nav>
     <!-- Navbar End -->
@@ -128,7 +135,7 @@
         <div class="row py-3">
             <div class="col-12 text-center">
                 <h1 class="display-3 text-white animated zoomIn">About Us</h1>
-                <a href="" class="h4 text-white">Home</a>
+                <a href="/" class="h4 text-white">Home</a>
                 <i class="far fa-circle text-white px-2"></i>
                 <a href="" class="h4 text-white">About</a>
             </div>
@@ -139,16 +146,16 @@
 
     <!-- About Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
+        <div class="container" style="margin-bottom: 100px;">
             <div class="row g-5">
                 <div class="col-lg-7">
                     <div class="section-title mb-4">
                         <h5 class="position-relative d-inline-block text-primary text-uppercase">About Us</h5>
                         <h1 class="display-5 mb-0">Dengar Mama <br>Menjadi Suara Penyembuhan Kesehatan Mental Maternal</h1>
                     </div>
-                    <h4 class="text-body fst-italic mb-4">Ruang Aman untuk Bercerita, Pulih, dan Saling Dukung demi Kesejahteraan Ibu dan Keluarga</h4>
+                    <h4 class="text-body fst-italic mb-4">Ruang Aman untuk Bercerita, Pulih, dan Saling Dukung demi Kesejahteraan Mama dan Keluarga</h4>
                     <p class="mb-4">
-                        Dengar Mama merupakan komunitas peduli kesehatan mental maternal yang memberikan ruang aman bagi ibu untuk bercerita, pulih, dan saling memberikan dukungan. Dengan penuh kasih sayang dan empati, Dengar Mama hadir untuk menemani perjalanan para ibu dalam mengatasi tantangan emosional dan psikologis. Dengar Mama memiliki tujuan dan harapan yang besar <br> untuk berkontribusi secara aktif pada penurunan prevalensi masalah kesehatan mental maternal serta meningkatkan kesejahteraan hidup pada ibu dan keluarga. Di sini, setiap cerita didengar, <br> setiap perjuangan dihargai, dan setiap ibu mendapatkan dukungan yang mereka butuhkan untuk kembali meraih kebahagiaan.</p>
+                        Dengar Mama merupakan komunitas peduli kesehatan mental maternal yang memberikan ruang aman bagi Mama untuk bercerita, pulih, dan saling memberikan dukungan. Dengan penuh kasih sayang dan empati, Dengar Mama hadir untuk menemani perjalanan para Mama dalam mengatasi tantangan emosional dan psikologis. Dengar Mama memiliki tujuan dan harapan yang besar <br> untuk berkontribusi secara aktif pada penurunan prevalensi masalah kesehatan mental maternal serta meningkatkan kesejahteraan hidup pada Mama dan keluarga. Di sini, setiap cerita didengar, <br> setiap perjuangan dihargai, dan setiap Mama mendapatkan dukungan yang mereka butuhkan untuk kembali meraih kebahagiaan.</p>
                     <div class="row g-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.3s">
                             <h5 class="mb-3"><i class="fa fa-check-circle text-primary me-3"></i>Layanan Konseling Nyaman & aman</h5>
@@ -159,7 +166,7 @@
                             <h5 class="mb-3"><i class="fa fa-check-circle text-primary me-3"></i>Edukasi Kebidanan & Psikologis</h5>
                         </div>
                     </div>
-                    <a href="appointment.html" class="btn btn-primary py-3 px-5 mt-4 wow zoomIn" data-wow-delay="0.6s">Make Appointment</a>
+                    <a href="/appointment" class="btn btn-primary py-3 px-5 mt-4 wow zoomIn" data-wow-delay="0.6s">Ruang Konsul</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 300px;">
                     <div class="position-relative h-100">
@@ -191,21 +198,6 @@
     </div>
     <!-- About End -->
     
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
-        <div class="container">
-            <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Sign Up</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
            <!-- Footer Start -->
            <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
             <div class="container pt-5">

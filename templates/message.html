@@ -1,0 +1,56 @@
+{% include 'headerAdmin.html' %}
+<main id="main" class="main bg-white">
+    <div class="pagetitle">
+        <h1>Messages</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item active">Messages</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Sent Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if messages %}
+                        {% for message in messages %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.subject }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.time_str }}</td>
+                            <td>
+                                <form action="/delete_message/{{ message._id }}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this message?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7">No messages found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main><!-- End #main -->
+
+{% include 'footerAdmin.html' %}

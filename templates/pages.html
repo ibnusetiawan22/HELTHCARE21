@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DentCare - Dental Clinic Website Template</title>
+    <title>Komunitas Dengar Mama</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -40,7 +40,7 @@
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00 am - 10.00 pm, Sunday Closed </small>
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Jam Operasional: Senin-Jum'at : 09.00 - 21.00, Sabtu-Minggu : Libur.</small>
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-end">
@@ -60,239 +60,220 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
-        <a href="index.html" class="navbar-brand p-0">
-            <h1 class="m-0 text-primary"><i class="fa fa-tooth me-2"></i>Dengar Mama</h1>
+        <a href="/" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Icon" class="me-2" style="width: 60px; height: auto; margin-bottom: 10px;">
+                Dengar Mama
+            </h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item active">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">Our Dentist</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/about" class="nav-item nav-link">Tentang</a>
+                <a href="/service" class="nav-item nav-link">Service</a>
+                <a href="/pages" class="nav-item nav-link">Pages</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            <a href="/appointment" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            {% if 'username' in session %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ session['username'] }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="/login" class="nav-item nav-link">Login</a>
+            {% endif %}
         </div>
     </nav>
     <!-- Navbar End -->
 
     <!-- Hero Start -->
-        <div class="container-fluid bg-primary py-5 hero-header mb-5">
-            <div class="row py-3">
-                <div class="col-12 text-center">
-                    <h1 class="display-3 text-white animated zoomIn">Pricing</h1>
-                    <a href="" class="h4 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h4 text-white">Pricing</a>
+<div class="container-fluid bg-primary py-5 hero-header mb-5">
+    <div class="row py-3">
+        <div class="col-12 text-center">
+            <h1 class="display-3 text-white animated zoomIn">Pojok Baca</h1>
+            <a href="" class="h4 text-white">Berita</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="" class="h4 text-white">Artikel</a>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<!-- Full Screen Search Start -->
+<div class="container-fluid bg-primary bg-appointment mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 40px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+    <div class="container">
+        <div class="row gx-5 mt-5 justify-content-center">
+            <div class="col-lg-9">
+                <h1 class="text-white mb-4 text-center">Update News and Articles</h1>
+                <div id="newsArticleCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                    <!-- Slide 1: News -->
+                        <div class="carousel-item active">
+                            <a href="#"> <!-- Ganti dengan URL yang sesuai untuk artikel detail -->
+                                <div class="text-center text-white">
+                                        <img src="../static/img/kegiatankomunitas.png" class="d-block mx-auto mb-4" style="width: 50%; border-radius: 20px;" alt="New Dental Technologies">
+                                        <h2 class="display-6">New Dental Technologies</h2>
+                                         <p class="h5">2024-05-15</p>
+                                        <p class="h6">Discover the latest advancements in dental technology that are revolutionizing the field and improving patient outcomes.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                        <!-- Slide 2: Article -->
+                        <div class="carousel-item">
+                            <div class="text-center text-white">
+                                <img src="../static/img/about1.jpg" class="d-block mx-auto mb-4"style="width: 50%; border-radius: 20px;" alt="Improving Oral Health">
+                                <h2 class="display-6">Improving Oral Health</h2>
+                                <p class="h5">2024-04-10</p>
+                                <p class="h6">Learn about effective strategies and practices for maintaining and improving your oral health.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3: Another News -->
+                        <div class="carousel-item">
+                            <div class="text-center text-white">
+                                <img src="../static/img/about2.png" class="d-block mx-auto mb-4" style="width: 50%; border-radius: 20px;" alt="Oral Health Awareness">
+                                <h2 class="display-6">Oral Health Awareness</h2>
+                                <p class="h5">2024-05-01</p>
+                                <p class="h6">Raising awareness about the importance of oral health and how it affects overall well-being.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 4: Another Article -->
+                        <div class="carousel-item">
+                            <div class="text-center text-white">
+                                <img src="../static/img/berita 1.jpg" class="d-block mx-auto mb-4" style="width: 50%; border-radius: 20px;" alt="Children's Dental Health">
+                                <h2 class="display-6">Children's Dental Health</h2>
+                                <p class="h5">2024-03-25</p>
+                                <p class="h6">Focus on the unique dental care needs of children and how to ensure their teeth remain healthy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#newsArticleCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#newsArticleCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
-    <!-- Hero End -->
+    </div>
+</div>
+<!-- Full Screen Search End -->
 
-    <!-- Full Screen Search Start -->
-    <div class="container-fluid bg-primary bg-appointment mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 90px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-        <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-12 py-5">
-                    <div class="py-5">
-                        <h1 class="display-5 text-white mb-4">We Are A Certified and Award Winning Dental Clinic You Can Trust</h1>
-                        <p class="text-white mb-0">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row gx-5 mt-5">
-                <div class="col-12">
-                    <h1 class="text-white mb-4 text-center">Journals, News, and Articles</h1>
-                    <table class="table table-bordered table-striped table-dark text-white">
-                        <thead>
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Journal of Dental Research</td>
-                                <td>Journal</td>
-                                <td>2024-06-01</td>
-                            </tr>
-                            <tr>
-                                <td>New Dental Technologies</td>
-                                <td>News</td>
-                                <td>2024-05-15</td>
-                            </tr>
-                            <tr>
-                                <td>Improving Oral Health</td>
-                                <td>Article</td>
-                                <td>2024-04-10</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<!-- News and Articles Section Start -->
+<div class="container-fluid py-5 bg-light wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="section-title mb-4 text-center">
+            <h5 class="position-relative d-inline-block text-primary text-uppercase">News and Articles</h5>
+            <h1 class="display-5 mb-0">Latest Updates and Articles</h1>
         </div>
-    </div>        
-    <!-- Full Screen Search End -->
-
-
-    <!-- Pricing Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5">
-                    <div class="section-title mb-4">
-                        <h5 class="position-relative d-inline-block text-primary text-uppercase">Pricing Plan</h5>
-                        <h1 class="display-5 mb-0">We Offer Fair Prices for Dental Treatment</h1>
+        <div class="row g-5">
+            <!-- Article 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="news-article card border-0 shadow-sm">
+                    <img src="../static/img/kegiatan komunitas.jpg" class="card-img-top" alt="New Dental Technologies">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">New Dental Technologies</h4>
+                        <p class="text-muted">2024-05-15</p>
+                        <p class="card-text">Discover the latest advancements in dental technology that are revolutionizing the field and improving patient outcomes.</p>
                     </div>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo eirmod magna dolore erat amet</p>
-                    <h5 class="text-uppercase text-primary wow fadeInUp" data-wow-delay="0.3s">Call for Appointment</h5>
-                    <h1 class="wow fadeInUp" data-wow-delay="0.6s">+012 345 6789</h1>
                 </div>
-                <div class="col-lg-7">
-                    <div class="owl-carousel price-carousel wow zoomIn" data-wow-delay="0.9s">
-                        <div class="price-item pb-4">
-                            <div class="position-relative">
-                                <img class="img-fluid rounded-top" src="../static/img/about.jpg" alt="">
-                                <div class="d-flex align-items-center justify-content-center bg-light rounded pt-2 px-3 position-absolute top-100 start-50 translate-middle" style="z-index: 2;">
-                                    <h2 class="text-primary m-0">$35</h2>
-                                </div>
-                            </div>
-                            <div class="position-relative text-center bg-light border-bottom border-primary py-5 p-4">
-                                <h4>Teeth Whitening</h4>
-                                <hr class="text-primary w-50 mx-auto mt-0">
-                                <div class="d-flex justify-content-between mb-3"><span>Modern Equipment</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Professional Dentist</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>24/7 Call Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <a href="appointment.html" class="btn btn-primary py-2 px-4 position-absolute top-100 start-50 translate-middle">Appointment</a>
-                            </div>
-                        </div>
-                        <div class="price-item pb-4">
-                            <div class="position-relative">
-                                <img class="img-fluid rounded-top" src="../static/img/about.jpg" alt="">
-                                <div class="d-flex align-items-center justify-content-center bg-light rounded pt-2 px-3 position-absolute top-100 start-50 translate-middle" style="z-index: 2;">
-                                    <h2 class="text-primary m-0">$49</h2>
-                                </div>
-                            </div>
-                            <div class="position-relative text-center bg-light border-bottom border-primary py-5 p-4">
-                                <h4>Dental Implant</h4>
-                                <hr class="text-primary w-50 mx-auto mt-0">
-                                <div class="d-flex justify-content-between mb-3"><span>Modern Equipment</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Professional Dentist</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>24/7 Call Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <a href="appointment.html" class="btn btn-primary py-2 px-4 position-absolute top-100 start-50 translate-middle">Appointment</a>
-                            </div>
-                        </div>
-                        <div class="price-item pb-4">
-                            <div class="position-relative">
-                                <img class="img-fluid rounded-top" src="../static/img/about.jpg" alt="">
-                                <div class="d-flex align-items-center justify-content-center bg-light rounded pt-2 px-3 position-absolute top-100 start-50 translate-middle" style="z-index: 2;">
-                                    <h2 class="text-primary m-0">$99</h2>
-                                </div>
-                            </div>
-                            <div class="position-relative text-center bg-light border-bottom border-primary py-5 p-4">
-                                <h4>Root Canal</h4>
-                                <hr class="text-primary w-50 mx-auto mt-0">
-                                <div class="d-flex justify-content-between mb-3"><span>Modern Equipment</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Professional Dentist</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>24/7 Call Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <a href="appointment.html" class="btn btn-primary py-2 px-4 position-absolute top-100 start-50 translate-middle">Appointment</a>
-                            </div>
-                        </div>
+            </div>
+            <!-- Article 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="news-article card border-0 shadow-sm">
+                    <img src="../static/img/berita 1.jpg" class="card-img-top" alt="Improving Oral Health">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Improving Oral Health</h4>
+                        <p class="text-muted">2024-04-10</p>
+                        <p class="card-text">Learn about effective strategies and practices for maintaining and improving your oral health.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="news-article card border-0 shadow-sm">
+                    <img src="../static/img/kegiatan komunitas.jpg" class="card-img-top" alt="Oral Health Awareness">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Oral Health Awareness</h4>
+                        <p class="text-muted">2024-05-01</p>
+                        <p class="card-text">Raising awareness about the importance of oral health and how it affects overall well-being.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="news-article card border-0 shadow-sm">
+                    <img src="../static/img/berita 1.jpg" class="card-img-top" alt="Children's Dental Health">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Children's Dental Health</h4>
+                        <p class="text-muted">2024-03-25</p>
+                        <p class="card-text">Focus on the unique dental care needs of children and how to ensure their teeth remain healthy.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Pricing End -->
+</div>
+<div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
+    <div class="container">
+        <div class="bg-primary p-5">
+            <form class="mx-auto" style="max-width: 600px;">
+                <div class="input-group">
+                    <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                    <button class="btn btn-dark px-4">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- News and Articles Section End -->
+
     
 
-    <!-- Newsletter Start -->
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
-        <div class="container">
-            <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Sign Up</button>
+<!-- Footer Start -->
+           <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
+            <div class="container pt-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h3 class="text-white mb-4">Get In Touch</h3>
+                        <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>JL Ir. Soekarno No.KM. 21, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, <br> Jawa Barat 45363</p>
+                        <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>dengarmama@gmail.com</p>
+                        <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+62 851-6188-0526 </p>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
-    
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
-        <div class="container pt-5">
-            <div class="row g-5 pt-4">
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Popular Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Follow Us</h3>
-                    <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-lg-start">
+                        <h3 class="text-white mb-4">Follow Us</h3>
+                        <div class="d-flex justify-content-start">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="mailto:dengarmama@gmail.com"><i class="fas fa-envelope fw-normal"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://wa.me/message/3MLJJT6XAB5JP1"><i class="fab fa-whatsapp fw-normal"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.linkedin.com/company/dengar-mama/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/dengarmama/"><i class="fab fa-instagram fw-normal"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid text-light py-4" style="background: #051225;">
-        <div class="container">
-            <div class="row g-0">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a><br>
-                        Distributed by <a class="text-white border-bottom" href="https://themewagon.com">ThemeWagon</a>          
-                    
-                    </p>
+        <div class="container-fluid text-light py-4" style="background: #051225;">
+            <div class="container">
+                <div class="row g-0 justify-content-center">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">2024 Dengar Mama</a>. All Rights Reserved.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer End -->
+<!-- Footer End -->
 
 
     <!-- Back to Top -->
@@ -311,6 +292,8 @@
     <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="../static/lib/twentytwenty/jquery.event.move.js"></script>
     <script src="../static/lib/twentytwenty/jquery.twentytwenty.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="../static/js/main.js"></script>

@@ -119,3 +119,42 @@
     
 })(jQuery);
 
+    //Appointment - phone
+    document.getElementById('phoneInput').addEventListener('input', function (event) {
+        var input = event.target;
+        var errorMessage = document.getElementById('error-message');
+        var phoneNumberPattern = /^\d{10,15}$/;
+
+        if (!phoneNumberPattern.test(input.value)) {
+            errorMessage.style.display = 'block';
+            input.setCustomValidity('Harap masukkan nomor telepon yang valid (10-15 digit).');
+        } else {
+            errorMessage.style.display = 'none';
+            input.setCustomValidity('');
+        }
+    });
+
+
+//Appointment - date
+$(document).ready(function(){
+    $('#date1 .datetimepicker-input').datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        todayHighlight: true
+    });
+});
+
+//Appointment - detail jadwal konsul
+document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Ambil data dari form
+    const date = event.target.date.value;
+    const time = event.target.time.value;
+
+    // Tampilkan data di halaman
+    document.getElementById('displayDate').textContent = 'Tanggal Konsultasi: ' + date;
+    document.getElementById('displayTime').textContent = 'Waktu Konsultasi: ' + time;
+
+    document.getElementById('appointmentDetails').style.display = 'block';
+});
